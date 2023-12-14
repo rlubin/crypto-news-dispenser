@@ -1,4 +1,4 @@
-# Crypto News Discord Bot
+# Crypto News Dispenser
 
 This bot will gather and parse crypto information from multiple news sources and social media websites (via APIs and web scraping).
 

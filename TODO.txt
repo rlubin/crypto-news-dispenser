@@ -1,0 +1,4 @@
+-create a module for each website that you want to scrape
+-return title and link to article
+-create a list of coins to watch
+-link articles relating to coins in discord
