@@ -1,6 +1,8 @@
 import os
 from dotenv import load_dotenv
 import discord
+import asyncio
+import scrape_manager
 
 load_dotenv()
 
@@ -20,13 +22,11 @@ client = discord.Client(intents=intents)
 @client.event
 async def on_ready():
     print(f'We have logged in as {client.user}')
+    ch = await client.fetch_channel(CHANNEL_ID)
 
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
+    stories = scrape_manager.scrape_all() # [(article title, article link), ...]
 
-    if message.content.startswith('$hello'):
-        await message.channel.send('Hello!')
+    for story in stories:
+        await ch.send(content=f'{story[0]} {story[1]}')
 
 client.run(DISCORD_CLIENT_TOKEN)
