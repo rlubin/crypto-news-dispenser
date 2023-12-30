@@ -1,3 +1,2 @@
 -create a module for each website that you want to scrape
 -create a list of coins to watch
--setup logging
