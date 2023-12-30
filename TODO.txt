@@ -1,2 +1,5 @@
 -create a module for each website that you want to scrape
 -create a list of coins to watch
+-create different channels for different coins or types of news
+-create a new table for types of news
+-add type of news to articles table

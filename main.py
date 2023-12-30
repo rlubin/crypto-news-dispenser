@@ -29,6 +29,7 @@ async def scrape_news():
     stories = []
     # [(article title, article link), ...]
     stories = scrape_manager.scrape_all()
+    logging.info(f"{len(stories)} articles scraped")
 
     indexes_to_del = []
 
@@ -37,6 +38,7 @@ async def scrape_news():
         exists = db.does_article_exist(stories[i][0], stories[i][1])
         if exists:
             indexes_to_del.insert(0, i)
+    logging.info(f"{len(indexes_to_del)} articles have already been linked")
 
     # remove stories that have already been linked
     for index in indexes_to_del:
@@ -47,13 +49,21 @@ async def scrape_news():
         logging.info(f"{story[0]}, {story[1]}")
         await ch.send(content=f'{story[0]} {story[1]}')
         db.add_article(story[0], story[1])
+    logging.info(f"{len(stories)} articles linked to discord")
+
+
+async def shutdown_bot():
+    logging.info(f"shutting down bot")
+    await client.close()
+    exit()
 
 
 @client.event
 async def on_ready():
+    logging.info(f"starting bot")
     logging.info(f"logged in as {client.user}")
     await scrape_news()
-    exit()
+    await shutdown_bot()
 
 
 client.run(DISCORD_CLIENT_TOKEN)
