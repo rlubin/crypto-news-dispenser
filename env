@@ -1,0 +1,5 @@
+DISCORD_CLIENT_TOKEN="discord client token"
+CHANNEL_ID="discord channel id"
+DB_PATH="absolute path to .db file"
+LOG_PATH="absolute path to where you want logs.log to go"
+SQL_SETUP_PATH="absloute path to sql/setup.sql"

@@ -53,14 +53,15 @@ async def scrape_news():
 
 
 async def shutdown_bot():
-    logging.info(f"shutting down bot")
+    logging.info("shutting down bot")
+    logging.info("---------------------------------")
     await client.close()
     exit()
 
 
 @client.event
 async def on_ready():
-    logging.info(f"starting bot")
+    logging.info("starting bot")
     logging.info(f"logged in as {client.user}")
     await scrape_news()
     await shutdown_bot()

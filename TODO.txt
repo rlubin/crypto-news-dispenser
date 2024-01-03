@@ -3,3 +3,5 @@
 -create different channels for different coins or types of news
 -create a new table for types of news
 -add type of news to articles table
+
+-doesnt seem to be getting new news from coindesk, is coindesk throttling it? recognizing that its connecting on a schedule?
